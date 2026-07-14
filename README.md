@@ -1,2 +1,2 @@
 # flow-by-hamster
-A product of hamster technologies.
+A product of Hamster Technologies.
