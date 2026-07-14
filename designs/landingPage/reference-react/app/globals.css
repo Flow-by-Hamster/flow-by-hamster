@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-dm-serif: "DM Serif Display", serif;
+
+  /* Brand */
+  --color-coral: #d85a30;
+  --color-coral-light: #faece7;
+  --color-coral-dark: #993c1d;
+
+  /* Neutrals */
+  --color-ink: #2c2c2a;
+  --color-ink-mid: #444441;
+  --color-muted: #888780;
+  --color-surface: #f1efe8;
+  --color-surface-mid: #d3d1c7;
+
+  /* Status */
+  --color-green: #1d9e75;
+  --color-green-light: #e1f5ee;
+  --color-green-dark: #0f6e56;
+  --color-amber: #ef9f27;
+  --color-amber-light: #faeeda;
+  --color-amber-dark: #854f0b;
+
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-color-mid: rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-dm-sans);
+  background: #ffffff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-dm-serif);
+}
+
+/* Reusable section container */
+.section-container {
+  @apply px-10 py-[60px] max-w-[1200px] mx-auto;
+}
+
+/* Button variants */
+.btn-primary {
+  @apply bg-[#2C2C2A] text-[#F1EFE8] rounded-full font-medium text-sm cursor-pointer transition-colors;
+}
+.btn-primary:hover {
+  background: var(--color-ink-mid);
+}
+
+.btn-outline {
+  @apply bg-transparent text-[#2C2C2A] rounded-full font-medium text-sm cursor-pointer transition-colors border border-black/20;
+}
+.btn-outline:hover {
+  background: var(--color-surface);
+}
+
+/* Badge */
+.badge-coral {
+  @apply inline-flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase rounded-full px-3.5 py-1.5;
+  background: var(--color-coral-light);
+  color: var(--color-coral-dark);
+}
+
+.badge-confirmed {
+  @apply text-[10px] font-medium px-2 py-0.5 rounded-full;
+  background: var(--color-green-light);
+  color: var(--color-green-dark);
+}
+.badge-pending {
+  @apply text-[10px] font-medium px-2 py-0.5 rounded-full;
+  background: var(--color-amber-light);
+  color: var(--color-amber-dark);
+}
+.badge-done {
+  @apply text-[10px] font-medium px-2 py-0.5 rounded-full;
+  background: var(--color-surface);
+  color: var(--color-muted);
+}
