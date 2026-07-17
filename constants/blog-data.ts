@@ -21,7 +21,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-07-17",
     category: "Customer Management",
     tags: ["Customer Retention", "CRM", "Business Growth", "Small Business", "WhatsApp Business"],
-    coverImage: "/blog_image/sad_business_woman.jpg",
+    coverImage: "/blog_image/sad_business_man.jpg",
     readTime: "7 min read",
     featured: true,
     body: `Every customer you forget is revenue you'll never recover.
