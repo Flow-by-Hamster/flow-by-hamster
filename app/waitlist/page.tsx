@@ -14,7 +14,13 @@ export default function WaitlistPage() {
       {/* Decorative clean ambient lighting depth overlay */}
       <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#171717]/3 blur-[120px] pointer-events-none" />
 
-      <SiteNav />
+      {/* 
+        FIXED: Isolated header positioning frame 
+        This keeps the component frame predictable to avoid deep-tree layouts re-calculating dimensions on click.
+      */}
+      <div className="relative z-30 w-full contain-layout">
+        <SiteNav />
+      </div>
 
       {/* Main Container Core - Matches features layout background precisely */}
       <section className="flex-1 bg-[radial-gradient(circle_at_top,_rgba(217,79,36,0.09),_transparent_55%)] flex flex-col items-center justify-center px-4 md:px-6 pt-24 pb-16 md:pb-24 relative z-10 text-center">
@@ -42,7 +48,7 @@ export default function WaitlistPage() {
             <WaitlistWizard />
           </div>
 
-          </div>
+        </div>
       </section>
 
       <SiteFooter />

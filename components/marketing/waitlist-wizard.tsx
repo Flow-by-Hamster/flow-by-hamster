@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Sub-component step components
@@ -65,17 +65,41 @@ export function WaitlistWizard() {
   const customBusinessRef = useRef<HTMLInputElement>(null);
   const customSourceRef = useRef<HTMLInputElement>(null);
 
-  // Force the evaluation string states straight into strict primitive booleans
-const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
-const isStep2Valid = !!(data.businessType && (data.businessType !== "Other" || data.customBusinessType.trim() !== ""));
-const isStep3Valid = !!(data.referralSource && (data.referralSource !== "Other" || data.customReferralSource.trim() !== ""));
+  // FIXED: Wrap validation calculations in useMemo so they only evaluate when specific fields change
+  const isEmailValid = useMemo(() => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
+  }, [data.email]);
+
+  const isStep2Valid = useMemo(() => {
+    return !!(data.businessType && (data.businessType !== "Other" || data.customBusinessType.trim() !== ""));
+  }, [data.businessType, data.customBusinessType]);
+
+  const isStep3Valid = useMemo(() => {
+    return !!(data.referralSource && (data.referralSource !== "Other" || data.customReferralSource.trim() !== ""));
+  }, [data.referralSource, data.customReferralSource]);
 
   const advance = useCallback(() => { setDirection(1); setStep((s) => Math.min(s + 1, TOTAL_STEPS) as WizardStep); }, []);
   const goBack = useCallback(() => { setDirection(-1); setStep((s) => Math.max(s - 1, 1) as WizardStep); }, []);
 
-  useEffect(() => { if (step === 1) setTimeout(() => emailRef.current?.focus(), 380); }, [step]);
-  useEffect(() => { if (data.businessType === "Other") customBusinessRef.current?.focus(); }, [data.businessType]);
-  useEffect(() => { if (data.referralSource === "Other") customSourceRef.current?.focus(); }, [data.referralSource]);
+  // FIXED: Safeguard device execution context. Only trigger input focus when true screen interactions are desktop dimensions
+  useEffect(() => { 
+    if (step === 1 && typeof window !== "undefined" && window.innerWidth > 768) {
+      const timer = setTimeout(() => emailRef.current?.focus(), 380); 
+      return () => clearTimeout(timer);
+    }
+  }, [step]);
+
+  useEffect(() => { 
+    if (data.businessType === "Other" && typeof window !== "undefined" && window.innerWidth > 768) {
+      customBusinessRef.current?.focus(); 
+    }
+  }, [data.businessType]);
+
+  useEffect(() => { 
+    if (data.referralSource === "Other" && typeof window !== "undefined" && window.innerWidth > 768) {
+      customSourceRef.current?.focus(); 
+    }
+  }, [data.referralSource]);
 
   const handleDummySubmit = () => {
     setSubmitState("loading");
