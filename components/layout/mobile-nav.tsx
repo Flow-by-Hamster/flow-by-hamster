@@ -49,16 +49,32 @@ export function MobileNav({
           
           {/* Top Links Section */}
           <nav className="flex flex-col gap-2 flex-1 overflow-y-auto">
-            {links.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={onClose}
-                className="rounded-xl px-3 py-3 text-sm font-medium text-[#171717] transition-colors duration-300 ease-in-out hover:bg-[#f7f5f0]"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              // Check active state for core targets or sub-routes
+              const isActive = 
+                pathname === link.href || 
+                (link.href !== "/" && pathname.startsWith(`${link.href}/`));
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={onClose}
+                  className={`flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-[#f7f5f0] text-[#d94f24]"
+                      : "text-[#171717] hover:bg-[#f7f5f0]"
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  
+                  {/* Subtle right indicator dot showing current page status premiumly */}
+                  {isActive && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#d94f24]" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Bottom Call-to-Actions (Controlled dynamically per page view context) */}
