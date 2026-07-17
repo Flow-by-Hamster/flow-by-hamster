@@ -1,74 +1,42 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const footerLinks = [
-  { label: "Features", href: "#features" },
-  { label: "Founder", href: "#founder" },
-  { label: "Blog", href: "#blog" },
-  { label: "Join Waitlist", href: "/waitlist" },
-];
-
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[#e7e2d8] bg-[#fcfaf7] px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr]">
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/logos/flow_by_ham_nobg.png"
-              alt="Flow logo"
-              width={132}
-              height={40}
-              priority
-            />
-          </div>
-          <p className="max-w-md text-base leading-7 text-[#6f6b63]">
-            Run your services beautifully.
+    <footer className="border-t border-[#e7e2d8] bg-[#fcfaf7] px-4 py-12 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        
+        {/* Company Credit */}
+        <div className="flex items-center gap-3 max-w-md">
+        <Image
+          src="/logos/hamster_icon-nobg.png"
+          alt="Hamster logo"
+          width={40}
+          height={40}
+          className="shrink-0 opacity-70"
+        />
+        <div className="space-y-0.5 text-left">
+          <p className="text-xs text-[#6f6b63] leading-relaxed">
+            Designed and built by <span className="font-medium text-[#171717]">Hamster Technologies</span>.
           </p>
-          <p className="max-w-md text-base leading-7 text-[#6f6b63]">
-            Professional booking and business operations for African service businesses.
-          </p>
-        </div>
-
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#171717]">
-            Product
-          </h3>
-          <ul className="space-y-3 text-sm text-[#6f6b63]">
-            {footerLinks.map((link) => (
-              <li key={link.label}>
-                <Link href={link.href} className="transition-colors hover:text-[#171717]">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#171717]">
-            Company
-          </h3>
-          <div className="flex items-center gap-3">
-            <Image
-              src="/logos/hamster_icon-nobg.png"
-              alt="Hamster logo"
-              width={40}
-              height={40}
-              className="shrink-0"
-            />
-            <p className="text-sm leading-7 text-[#6f6b63]">
-              Designed and built by Hamster Technologies.
-            </p>
-          </div>
-          <p className="mt-3 text-sm leading-7 text-[#6f6b63]">
-            Creating software that helps African businesses operate beautifully.
+          <p className="text-[11px] text-[#9c968e] leading-relaxed">
+            Engineered to scale operational structure across African service markets.
           </p>
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-2 border-t border-[#e7e2d8] pt-6 text-sm text-[#8c877d] sm:flex-row sm:items-center sm:justify-between">
-        <p>© 2026 Hamster Technologies Ltd.</p>
+        {/* Right Side: Legal & Copyright Links */}
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-[#9c968e]">
+          <Link href="/terms" className="hover:text-[#171717] transition-colors">
+            Terms & Conditions
+          </Link>
+          <Link href="/privacy" className="hover:text-[#171717] transition-colors">
+            Privacy Policy
+          </Link>
+          <span className="text-[#e7e2d8] hidden sm:inline">|</span>
+          <p>© 2026 Hamster Technologies Ltd.</p>
+        </div>
+
       </div>
     </footer>
   );

@@ -1,0 +1,25 @@
+import { SiteNav } from "@/components/layout/site-nav";
+import { FeaturesHero } from "@/components/marketing/features/features-hero";
+import { FeaturesGrid } from "@/components/marketing/features/features-grid";
+import { SiteFooter } from "@/components/marketing/site-footer";
+
+export const metadata = {
+  title: "Features — Flow Business Operating System",
+  description: "Discover how Flow transforms your daily WhatsApp interactions into a structured, automated storefront.",
+};
+
+export default function FeaturesPage() {
+  return (
+    /* flex container enforces full height so the footer sits perfectly flush if viewports expand */
+    <div className="min-h-screen flex flex-col bg-[#f7f4ee] bg-[radial-gradient(circle_at_top,_rgba(217,79,36,0.09),_transparent_55%)] text-[#171717]">
+      <SiteNav />
+      
+      <main className="flex-1">
+        <FeaturesHero />
+        <FeaturesGrid />
+      </main>
+      
+      <SiteFooter />
+    </div>
+  );
+}
