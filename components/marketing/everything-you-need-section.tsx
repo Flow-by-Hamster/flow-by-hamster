@@ -78,7 +78,7 @@ export function EverythingYouNeedSection() {
           Everything you need
         </p>
         <h2 className="max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.02em] text-[#171717] sm:text-4xl lg:text-[42px]">
-          Your whole business, <span className="italic text-[#b84a22]">in one tab.</span>
+          Your whole business, <span className="italic text-[#943333]">in one tab.</span>
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-[#6f6b63] sm:text-lg">
           No more juggling WhatsApp, spreadsheets, and cash. Flow brings structure without the friction of a traditional platform.

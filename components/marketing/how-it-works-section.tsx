@@ -29,7 +29,7 @@ export function HowItWorksSection() {
           How it works
         </p>
         <h2 className="max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.02em] text-[#171717] sm:text-4xl lg:text-[42px]">
-          Up and running in <span className="italic text-[#b84a22]">under 10 minutes.</span>
+          Up and running in <span className="italic text-[#943333]">under 10 minutes.</span>
         </h2>
 
         <div className="mt-10 grid gap-0 rounded-[28px] border border-[#e7e2d8] bg-white/80 md:grid-cols-4">

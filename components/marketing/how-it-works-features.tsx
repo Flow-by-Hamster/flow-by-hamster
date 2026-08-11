@@ -33,11 +33,11 @@ export function HowItWorksFeatures() {
         
         {/* Editorial Top Intro */}
         <div className="text-center max-w-2xl mx-auto mb-24">
-          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#d24e2b] mb-4">
+          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#943333] mb-4">
             The Flow Workflow
           </p>
           <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#171717] mb-6 leading-[1.15]">
-            Up and running in <span className="text-[#d24e2b] italic font-normal">under 10 minutes.</span>
+            Up and running in <span className="text-[#943333] italic font-normal">under 10 minutes.</span>
           </h1>
           <p className="text-sm text-[#6f6b63] leading-relaxed max-w-lg mx-auto">
             Stop relying on manual memory workflows. Flow integrates seamlessly alongside the messaging tools you already master every single day.
@@ -57,7 +57,7 @@ export function HowItWorksFeatures() {
             >
               {/* Premium Floating Step Indicator */}
               <div className="flex items-start">
-                <span className="font-serif text-4xl font-light text-[#d24e2b]/30 tracking-tight">
+                <span className="font-serif text-4xl font-light text-[#943333]/30 tracking-tight">
                   {step.number}
                 </span>
               </div>

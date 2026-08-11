@@ -11,7 +11,7 @@ export function FeaturesHero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#d94f24] mb-4"
+          className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#943333] mb-4"
         >
           The Foundation Platform (v1.0)
         </motion.p>
@@ -23,7 +23,7 @@ export function FeaturesHero() {
           className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#171717] leading-[1.15] mb-6"
         >
           Run your services beautifully, <br />
-          <span className="text-[#d94f24] italic font-normal">systemize your growth.</span>
+          <span className="text-[#943333] italic font-normal">systemize your growth.</span>
         </motion.h1>
         
         <motion.p 

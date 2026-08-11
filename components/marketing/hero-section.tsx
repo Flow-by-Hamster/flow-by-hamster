@@ -10,17 +10,17 @@ const avatars = [
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(217,79,36,0.09),_transparent_55%)]">
+    <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(148,51,51,0.09),_transparent_55%)]">
       <div className="mx-auto flex max-w-7xl flex-col items-center px-4 pb-20 pt-12 text-center sm:px-8 sm:pb-24 sm:pt-16 lg:px-10 lg:pb-28 lg:pt-24">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#e7dfd0] bg-white/80 px-4 py-2 text-sm font-medium text-[#6f6b63] shadow-sm sm:mb-7">
-          <span className="text-[#d94f24]" aria-hidden="true">
+          <span className="text-[#943333]" aria-hidden="true">
             ⚡
           </span>
           Built for African service businesses
         </div>
 
         <h1 className="max-w-4xl text-[2.4rem] font-semibold leading-[0.95] tracking-[-0.03em] text-[#171717] sm:text-[3rem] lg:text-[4.5rem]">
-          Run your services, <span className="italic text-[#b84a22]">beautifully.</span>
+          Run your services, <span className="italic text-[#943333]">beautifully.</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-base leading-7 text-[#6f6b63] sm:mt-6 sm:text-lg sm:leading-8 lg:text-xl">
@@ -37,7 +37,7 @@ export function HeroSection() {
         </div>
 
         <div className="mt-10 mx-auto flex max-w-[95%] flex-wrap items-center justify-center gap-3 rounded-full border border-[#e7dfd0] bg-white/90 px-4 py-3 text-center shadow-sm sm:max-w-[34rem]">
-          <div className="flex items-center justify-center rounded-full bg-[#faece7] p-1 text-sm text-[#d94f24]">
+          <div className="flex items-center justify-center rounded-full p-1 text-sm text-[#943333]">
             <Image src="/logos/hamster_icon-nobg.png" alt="Hamster icon" width={40} height={40} />
           </div>
           <p className="text-sm leading-6 text-[#6f6b63]">

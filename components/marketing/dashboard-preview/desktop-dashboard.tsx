@@ -157,7 +157,7 @@ export function DesktopDashboard() {
         <div className="p-4 sm:p-5 lg:p-6">
           <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm font-semibold text-[#171717]">Good morning, Tola ☀️</p>
-            <button className="inline-flex items-center justify-center rounded-full bg-[#d94f24] px-3.5 py-2 text-sm font-medium text-white shadow-[0_10px_26px_rgba(217,79,36,0.16)]">
+            <button className="inline-flex items-center justify-center rounded-full bg-[#943333] px-3.5 py-2 text-sm font-medium text-white shadow-[0_10px_26px_rgba(217,79,36,0.16)]">
               + New booking
             </button>
           </div>

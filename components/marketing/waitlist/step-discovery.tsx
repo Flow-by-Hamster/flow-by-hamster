@@ -39,7 +39,7 @@ export function StepDiscovery({
           <button
             key={opt.label}
             onClick={() => onSelect(opt.label)}
-            className={`p-3 rounded-xl text-left text-xs font-medium border flex items-center gap-2 transition ${referralSource === opt.label ? "border-[#d24e2b] bg-[#d24e2b]/5 text-[#d24e2b]" : "border-[#e7e2d8] text-[#171717] hover:bg-[#fcfaf7]"}`}
+            className={`p-3 rounded-xl text-left text-xs font-medium border flex items-center gap-2 transition ${referralSource === opt.label ? "border-[#943333] bg-[#943333]/5 text-[#943333]" : "border-[#e7e2d8] text-[#171717] hover:bg-[#fcfaf7]"}`}
           >
             <span>{opt.emoji}</span>
             <span className="truncate">{opt.label}</span>
@@ -61,7 +61,7 @@ export function StepDiscovery({
               value={customReferralSource}
               onChange={(e) => onCustomChange(e.target.value)}
               placeholder="Please specify how you heard of us..."
-              className="w-full px-4 py-2.5 rounded-xl border border-[#e7e2d8] bg-[#fcfaf7] focus:border-[#d24e2b] focus:ring-1 focus:ring-[#d24e2b] outline-none transition text-xs text-[#171717]"
+              className="w-full px-4 py-2.5 rounded-xl border border-[#e7e2d8] bg-[#fcfaf7] focus:border-[#943333] focus:ring-1 focus:ring-[#943333] outline-none transition text-xs text-[#171717]"
             />
           </motion.div>
         )}
@@ -70,7 +70,7 @@ export function StepDiscovery({
       <button 
         disabled={!isValid} 
         onClick={onAdvance} 
-        className="w-full bg-[#d24e2b] text-white font-medium py-3 rounded-full hover:bg-[#b83f20] disabled:bg-[#e7e2d8] disabled:text-[#9c968e] transition text-sm shadow-sm"
+        className="w-full bg-[#943333] text-white font-medium py-3 rounded-full hover:bg-[#b83f20] disabled:bg-[#b83f3f] disabled:text-[#9c968e] transition text-sm shadow-sm"
       >
         Continue
       </button>

@@ -8,6 +8,7 @@ import { StepEmail } from "./waitlist/step-email";
 import { StepBusiness } from "./waitlist/step-business";
 import { StepDiscovery } from "./waitlist/step-discovery";
 import { StepReview } from "./waitlist/step-review";
+import { ErrorBanner } from "../forms/error-banner";
 
 type WizardStep = 1 | 2 | 3 | 4;
 type SubmitState = "idle" | "loading" | "success";
@@ -53,6 +54,7 @@ export function WaitlistWizard() {
   const [step, setStep] = useState<WizardStep>(1);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [data, setData] = useState<WaitlistData>({
     email: "",
     businessType: "",
@@ -65,7 +67,6 @@ export function WaitlistWizard() {
   const customBusinessRef = useRef<HTMLInputElement>(null);
   const customSourceRef = useRef<HTMLInputElement>(null);
 
-  // FIXED: Wrap validation calculations in useMemo so they only evaluate when specific fields change
   const isEmailValid = useMemo(() => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
   }, [data.email]);
@@ -78,10 +79,18 @@ export function WaitlistWizard() {
     return !!(data.referralSource && (data.referralSource !== "Other" || data.customReferralSource.trim() !== ""));
   }, [data.referralSource, data.customReferralSource]);
 
-  const advance = useCallback(() => { setDirection(1); setStep((s) => Math.min(s + 1, TOTAL_STEPS) as WizardStep); }, []);
-  const goBack = useCallback(() => { setDirection(-1); setStep((s) => Math.max(s - 1, 1) as WizardStep); }, []);
+  const advance = useCallback(() => { 
+    setErrorMessage(null);
+    setDirection(1); 
+    setStep((s) => Math.min(s + 1, TOTAL_STEPS) as WizardStep); 
+  }, []);
+  
+  const goBack = useCallback(() => { 
+    setErrorMessage(null);
+    setDirection(-1); 
+    setStep((s) => Math.max(s - 1, 1) as WizardStep); 
+  }, []);
 
-  // FIXED: Safeguard device execution context. Only trigger input focus when true screen interactions are desktop dimensions
   useEffect(() => { 
     if (step === 1 && typeof window !== "undefined" && window.innerWidth > 768) {
       const timer = setTimeout(() => emailRef.current?.focus(), 380); 
@@ -101,9 +110,53 @@ export function WaitlistWizard() {
     }
   }, [data.referralSource]);
 
-  const handleDummySubmit = () => {
+  const handleWaitlistSubmit = async () => {
+    if (submitState === "loading") return;
+    
     setSubmitState("loading");
-    setTimeout(() => setSubmitState("success"), 1200);
+    setErrorMessage(null);
+
+    const businessCategory = data.businessType === "Other" ? data.customBusinessType : data.businessType;
+    const referralSource = data.referralSource === "Other" ? data.customReferralSource : data.referralSource;
+    
+    // Fallback extraction for name field (e.g., "tea" from "tea@example.com")
+    const extractedName = data.email.split("@")[0].replace(/[._-]/g, " ");
+    const formattedName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/public/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formattedName,
+          email: data.email,
+          businessCategory,
+          referralSource,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.success === false) {
+        if (result.status === "validation_error" && result.details) {
+          // Display explicit validation error breakdown
+          const errors = result.details.map((d: { field: string; message: string }) => d.message).join(" ");
+          setErrorMessage(errors || "Validation failed. Please verify your details.");
+        } else {
+          // Display fallback for conflicts or general server exceptions
+          setErrorMessage(result.message || "An error occurred. Please try again.");
+        }
+        setSubmitState("idle");
+        return;
+      }
+
+      setSubmitState("success");
+    } catch (err) {
+      setErrorMessage("Network error. Please check your connection and try again.");
+      setSubmitState("idle");
+    }
   };
 
   if (submitState === "success") {
@@ -127,7 +180,7 @@ export function WaitlistWizard() {
           <span>{step === 1 ? "Your Email" : step === 2 ? "Your Business" : step === 3 ? "Discovery" : "Review"}</span>
         </div>
         <div className="h-1 bg-[#e7e2d8] rounded-full overflow-hidden">
-          <motion.div animate={{ width: `${((step - 1) / (TOTAL_STEPS - 1)) * 100}%` }} className="h-full bg-[#d24e2b]" />
+          <motion.div animate={{ width: `${((step - 1) / (TOTAL_STEPS - 1)) * 100}%` }} className="h-full bg-[#943333]" />
         </div>
       </div>
 
@@ -179,14 +232,20 @@ export function WaitlistWizard() {
             )}
 
             {step === 4 && (
-              <StepReview 
-                businessDisplay={data.businessType === "Other" ? data.customBusinessType : data.businessType}
-                referralDisplay={data.referralSource === "Other" ? data.customReferralSource : data.referralSource}
-                submitState={submitState}
-                onSubmit={handleDummySubmit}
-                onGoBack={goBack}
-              />
-            )}
+          <div className="space-y-4">
+            <AnimatePresence mode="wait">
+              {errorMessage && <ErrorBanner message={errorMessage} />}
+            </AnimatePresence>
+            
+            <StepReview 
+              businessDisplay={data.businessType === "Other" ? data.customBusinessType : data.businessType}
+              referralDisplay={data.referralSource === "Other" ? data.customReferralSource : data.referralSource}
+              submitState={submitState}
+              onSubmit={handleWaitlistSubmit}
+              onGoBack={goBack}
+            />
+          </div>
+        )}
           </motion.div>
         </AnimatePresence>
       </div>

@@ -33,7 +33,7 @@ export function SiteFooter() {
           <Link href="/privacy" className="hover:text-[#171717] transition-colors">
             Privacy Policy
           </Link>
-          <span className="text-[#e7e2d8] hidden sm:inline">|</span>
+          <span className="text-[#b83f3f] hidden sm:inline">|</span>
           <p>© 2026 Hamster Technologies Ltd.</p>
         </div>
 

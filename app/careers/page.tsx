@@ -10,7 +10,7 @@ export const metadata = {
 export default function CareersPage() {
   return (
     /* Turned into a flex container with min-h-screen to pin the footer to the bottom */
-    <main className="min-h-screen flex flex-col bg-[#f7f4ee] bg-[radial-gradient(circle_at_top,_rgba(217,79,36,0.09),_transparent_55%)] text-[#171717]">
+    <main className="min-h-screen flex flex-col bg-[#f7f4ee] bg-[radial-gradient(circle_at_top,_rgba(148,51,51,0.09),_transparent_55%)] text-[#171717]">
       <SiteNav />
       
       {/* CareersSection now fills the vertical void */}

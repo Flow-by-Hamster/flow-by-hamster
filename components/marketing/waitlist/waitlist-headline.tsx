@@ -42,7 +42,7 @@ export function WaitlistHeadline() {
             return (
               <span key={idx} className="block">
                 {isAccent ? (
-                  <span className="text-[#d24e2b] italic font-serif font-normal block sm:inline">
+                  <span className="text-[#943333] italic font-serif font-normal block sm:inline">
                     {line}
                   </span>
                 ) : (

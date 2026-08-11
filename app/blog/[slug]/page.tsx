@@ -47,7 +47,7 @@ export default async function BlogPostDetail({ params }: PostPageProps) {
       <article className="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 pt-24 pb-24 relative z-10">
         
         <div className="mb-8">
-          <Link href="/blog" className="text-xs font-semibold text-[#d94f24] hover:underline inline-flex items-center gap-1">
+          <Link href="/blog" className="text-xs font-semibold text-[#943333] hover:underline inline-flex items-center gap-1">
             ← Back to journal entries
           </Link>
         </div>

@@ -62,7 +62,7 @@ export function BlogBody({ content }: BlogBodyProps) {
         // Editorial Pull Quotes
         if (line.startsWith("*\"") && line.endsWith("\"*")) {
           return (
-            <blockquote key={idx} className="border-l-2 border-[#d94f24] pl-4 my-6 italic text-sm md:text-base text-[#d94f24]/90 font-serif">
+            <blockquote key={idx} className="border-l-2 border-[#943333] pl-4 my-6 italic text-sm md:text-base text-[#943333]/90 font-serif">
               {line.replaceAll("*", "")}
             </blockquote>
           );

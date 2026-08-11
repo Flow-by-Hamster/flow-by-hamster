@@ -85,7 +85,7 @@ export function MobileDashboard() {
               </p>
             </div>
 
-            <button className="rounded-full bg-[#d94f24] px-3 py-2 text-xs font-semibold text-white">
+            <button className="rounded-full bg-[#943333] px-3 py-2 text-xs font-semibold text-white">
               + New
             </button>
           </div>

@@ -8,7 +8,7 @@ export function ArticleHeader({ post }: ArticleHeaderProps) {
   return (
     <header className="mb-10 space-y-4">
       <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-[#8c877d]">
-        <span className="text-[#d94f24]">{post.category}</span>
+        <span className="text-[#943333]">{post.category}</span>
         <span>·</span>
         <span>{post.readTime}</span>
       </div>

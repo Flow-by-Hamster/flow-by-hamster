@@ -79,7 +79,7 @@ export function CareersSection() {
             alt="Hamster Technologies" 
             className="mb-4 h-12 w-auto object-contain"
           />
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#d94f24]">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#943333]">
             Hamster is hiring
           </p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#171717] sm:text-4xl">

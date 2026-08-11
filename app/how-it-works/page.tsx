@@ -11,7 +11,7 @@ export default function HowItWorksPage() {
   return (
     <>
       <SiteNav />
-      <main className="min-h-screen bg-[#fcfaf7]  bg-[radial-gradient(circle_at_top,_rgba(217,79,36,0.09),_transparent_55%)]">
+      <main className="min-h-screen bg-[#fcfaf7]  bg-[radial-gradient(circle_at_top,_rgba(148,51,51,0.09),_transparent_55%)]">
         <HowItWorksFeatures />
       </main>
       <SiteFooter />

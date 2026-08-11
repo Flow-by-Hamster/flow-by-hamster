@@ -57,10 +57,10 @@ export function StepReview({ businessDisplay, referralDisplay, submitState, onSu
       
       {/* Selection Badges */}
       <div className="flex flex-wrap justify-center gap-1.5 mb-6">
-        <div className="text-[10px] font-bold tracking-wider text-[#d24e2b] bg-[#d24e2b]/5 border border-[#d24e2b]/10 px-2.5 py-1 rounded-full uppercase">
+        <div className="text-[10px] font-bold tracking-wider text-[#943333] bg-[#943333]/5 border border-[#943333]/10 px-2.5 py-1 rounded-full uppercase">
           {businessDisplay}
         </div>
-        <div className="text-[10px] font-bold tracking-wider text-[#6f6b63] bg-[#e7e2d8]/40 px-2.5 py-1 rounded-full uppercase">
+        <div className="text-[10px] font-bold tracking-wider text-[#6f6b63] bg-[#b83f3f]/40 px-2.5 py-1 rounded-full uppercase">
           Source: {referralDisplay}
         </div>
       </div>
@@ -68,7 +68,7 @@ export function StepReview({ businessDisplay, referralDisplay, submitState, onSu
       <button 
         onClick={onSubmit} 
         disabled={submitState === "loading"} 
-        className="w-full bg-[#d24e2b] text-white font-medium py-3 rounded-full hover:bg-[#b83f20] disabled:bg-[#e7e2d8] disabled:text-[#9c968e] disabled:cursor-not-allowed transition text-sm flex items-center justify-center gap-2 shadow-sm"
+        className="w-full bg-[#943333] text-white font-medium py-3 rounded-full hover:bg-[#b83f20] disabled:bg-[#b83f3f] disabled:text-[#9c968e] disabled:cursor-not-allowed transition text-sm flex items-center justify-center gap-2 shadow-sm"
       >
         {submitState === "loading" ? "Securing position..." : "Join the Waitlist"}
       </button>

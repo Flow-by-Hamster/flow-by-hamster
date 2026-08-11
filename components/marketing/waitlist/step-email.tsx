@@ -19,12 +19,12 @@ export function StepEmail({ email, emailRef, onChange, onAdvance, isValid }: Ste
         value={email}
         onChange={(e) => onChange(e.target.value)}
         placeholder="name@company.com"
-        className="w-full px-4 py-3 rounded-full border border-[#e7e2d8] bg-[#fcfaf7] focus:border-[#d24e2b] focus:ring-1 focus:ring-[#d24e2b] outline-none transition mb-4 text-sm text-[#171717]"
+        className="w-full px-4 py-3 rounded-full border border-[#e7e2d8] bg-[#fcfaf7] focus:border-[#943333] focus:ring-1 focus:ring-[#943333] outline-none transition mb-4 text-sm text-[#171717]"
       />
       <button 
         disabled={!isValid} 
         onClick={onAdvance} 
-        className="w-full bg-[#d24e2b] text-white font-medium py-3 rounded-full hover:bg-[#b83f20] disabled:bg-[#e7e2d8] disabled:text-[#9c968e] transition text-sm shadow-sm"
+        className="w-full bg-[#943333] text-white font-medium py-3 rounded-full hover:bg-[#b83f20] disabled:bg-[#b83f3f] disabled:text-[#9c968e] transition text-sm shadow-sm"
       >
         Continue
       </button>

@@ -1,7 +1,7 @@
 export function EditorialHeader() {
   return (
     <div className="border-b border-[#e7e2d8] pb-10 mb-12">
-      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#d94f24]">
+      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#943333]">
         The Flow Journal
       </p>
       <h1 className="mt-2 text-4xl font-bold tracking-tight font-serif text-[#171717] sm:text-5xl">

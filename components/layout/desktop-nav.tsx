@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navLinks = [
+const baseNavLinks = [
   { label: "Features", href: "/features" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
@@ -11,6 +11,12 @@ const navLinks = [
 
 export function DesktopNav() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Dynamic links: Conditionally add Home to the start if we aren't on the root path
+  const navLinks = isHome 
+    ? baseNavLinks 
+    : [{ label: "Home", href: "/" }, ...baseNavLinks];
 
   return (
     <div className="hidden items-center gap-7 lg:flex">
@@ -34,7 +40,7 @@ export function DesktopNav() {
             
             {/* Minimal Underline Accent Layer */}
             <span 
-              className={`absolute bottom-0 left-0 h-[1.5px] bg-[#d94f24] transition-all duration-300 ease-out ${
+              className={`absolute bottom-0 left-0 h-[1.5px] bg-[#943333] transition-all duration-300 ease-out ${
                 isActive 
                   ? "w-full opacity-100" 
                   : "w-0 opacity-0 group-hover:w-1/2 group-hover:opacity-50"
